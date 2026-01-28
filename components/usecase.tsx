@@ -62,12 +62,12 @@ interface UseCaseItem {
 
 function FeatureCard({ item }: { item: UseCaseItem }) {
   return (
-    <div className="bg-neutral-900 rounded-xl p-6 border border-neutral-800">
-      <div className="w-12 h-12 bg-[#fe6500]/20 rounded-lg flex items-center justify-center mb-4">
+    <div className="bg-neutral-900 rounded-xl p-4 sm:p-6 border border-neutral-800">
+      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#fe6500]/20 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
         {icons[item.icon]}
       </div>
-      <h3 className="poppins-black text-white text-xl mb-3">{item.title}</h3>
-      <p className="poppins-light text-neutral-400 text-sm leading-relaxed">
+      <h3 className="poppins-black text-white text-lg sm:text-xl mb-2 sm:mb-3">{item.title}</h3>
+      <p className="poppins-light text-neutral-400 text-xs sm:text-sm leading-relaxed">
         {item.description}
       </p>
     </div>
@@ -76,33 +76,33 @@ function FeatureCard({ item }: { item: UseCaseItem }) {
 
 export function UseCase() {
   return (
-    <section className="w-full -mt-10">
+    <section className="w-full mt-8 md:mt-0 lg:-mt-10">
       <div className="w-full px-4">
         {/* Black rounded container */}
-        <div className="bg-black/90 rounded-t-3xl p-8 md:p-12 lg:p-16">
+        <div className="bg-black/90 rounded-t-3xl p-6 sm:p-8 md:p-12 lg:p-16">
           {/* Header */}
-          <div className="text-center mb-10">
-            <h2 className="poppins-black text-3xl md:text-4xl lg:text-5xl text-white mb-4">
-              How Pave Works For You
+          <div className="mb-6 sm:mb-10">
+            <h2 className="poppins-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-2 sm:mb-4">
+              UseCase
             </h2>
-            <p className="poppins-light text-neutral-400 text-base md:text-lg max-w-2xl mx-auto">
+            <p className="poppins-light text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl">
               Whether you&apos;re building the next big thing or running a business, Pave has you covered.
             </p>
           </div>
 
           {/* Tabs */}
           <Tabs defaultValue="developer" className="w-full">
-            <div className="flex justify-center mb-8">
+            <div className="flex justify-center mb-6 sm:mb-8">
               <TabsList className="bg-neutral-800 p-1 rounded-full">
                 <TabsTrigger 
                   value="developer" 
-                  className="poppins-light rounded-full px-6 py-2 data-[state=active]:bg-[#fe6500] data-[state=active]:text-white text-neutral-400"
+                  className="poppins-light rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base data-[state=active]:bg-[#fe6500] data-[state=active]:text-white text-neutral-400"
                 >
                   Developer
                 </TabsTrigger>
                 <TabsTrigger 
                   value="company" 
-                  className="poppins-light rounded-full px-6 py-2 data-[state=active]:bg-[#fe6500] data-[state=active]:text-white text-neutral-400"
+                  className="poppins-light rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base data-[state=active]:bg-[#fe6500] data-[state=active]:text-white text-neutral-400"
                 >
                   Company
                 </TabsTrigger>
@@ -110,13 +110,13 @@ export function UseCase() {
             </div>
 
             {/* Developer Content */}
-            <TabsContent value="developer" className="mt-6">
+            <TabsContent value="developer" className="mt-4 sm:mt-6">
               <div className="max-w-4xl mx-auto">
-                <div className="mb-6 text-center">
-                  <h3 className="poppins-black text-white text-2xl md:text-3xl mb-3">
+                <div className="mb-4 sm:mb-6 text-center">
+                  <h3 className="poppins-black text-white text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">
                     {usecasesData.developer.title}
                   </h3>
-                  <p className="poppins-light text-neutral-400 text-base md:text-lg">
+                  <p className="poppins-light text-neutral-400 text-sm sm:text-base md:text-lg">
                     {usecasesData.developer.description}
                   </p>
                 </div>
@@ -177,8 +177,8 @@ export function UseCase() {
             </TabsContent>
 
             {/* Company Content */}
-            <TabsContent value="company" className="mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <TabsContent value="company" className="mt-4 sm:mt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {usecasesData.company.map((item) => (
                   <FeatureCard key={item.id} item={item} />
                 ))}

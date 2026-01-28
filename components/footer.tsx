@@ -18,7 +18,7 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="poppins-light  text-neutral-500">
+          <p className="poppins-light max-sm:text-sm text-neutral-500">
             © 2026 Pave Inc. All rights reserved.
           </p>
 
