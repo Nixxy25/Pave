@@ -66,7 +66,7 @@ function FeatureCard({ item }: { item: UseCaseItem }) {
       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#fe6500]/20 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
         {icons[item.icon]}
       </div>
-      <h3 className="poppins-black text-white text-lg sm:text-xl mb-2 sm:mb-3">{item.title}</h3>
+      <h3 className="poppins-regular text-white text-lg sm:text-xl mb-2 sm:mb-3">{item.title}</h3>
       <p className="poppins-light text-neutral-400 text-xs sm:text-sm leading-relaxed">
         {item.description}
       </p>
@@ -82,7 +82,7 @@ export function UseCase() {
         <div className="bg-black/90 rounded-t-3xl p-6 sm:p-8 md:p-12 lg:p-16">
           {/* Header */}
           <div className="mb-6 sm:mb-10">
-            <h2 className="poppins-black text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-2 sm:mb-4">
+            <h2 className="poppins-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-2 sm:mb-4">
               UseCase
             </h2>
             <p className="poppins-light text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl">
@@ -113,7 +113,7 @@ export function UseCase() {
             <TabsContent value="developer" className="mt-4 sm:mt-6">
               <div className="max-w-4xl mx-auto">
                 <div className="mb-4 sm:mb-6 text-center">
-                  <h3 className="poppins-black text-white text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">
+                  <h3 className="poppins-regular text-white text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">
                     {usecasesData.developer.title}
                   </h3>
                   <p className="poppins-light text-neutral-400 text-sm sm:text-base md:text-lg">
