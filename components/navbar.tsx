@@ -11,15 +11,15 @@ export function Navbar() {
             <Image 
               src="/pave.png" 
               alt="PAVE" 
-              width={80} 
-              height={80}
+              width={100} 
+              height={100}
               className="object-contain max-sm:w-20 max-sm:h-20"
             />
           </div>
 
-           <span className="poppins-light max-sm:text-sm rounded-full bg-white hover:bg-neutral-800 text-black  h-auto">
-             Explore use case
-          </span>
+           <div className="poppins-light cursor-pointer max-sm:text-sm  hover:bg-neutral-800 text-black">
+             Explore use case 
+          </div>
         </div>
       </div>
     </nav>

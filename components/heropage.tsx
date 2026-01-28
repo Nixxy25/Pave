@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export function HeroPage() {
   return (
     <BackgroundLines className="flex items-center justify-center w-full flex-col px-4 min-h-[80vh] md:min-h-[90vh]">
-      <span className="poppins-black bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl max-w-4xl py-4 relative z-20">
+      <span className="poppins-regular bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl max-w-4xl py-4 relative z-20">
         Create sales pages & Accept crypto payments instantly.
       </span>
       <p className="poppins-light max-w-xl md:max-w-2xl mx-auto text-sm md:text-base text-neutral-700 dark:text-neutral-400 text-center mt-4">

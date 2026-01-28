@@ -28,6 +28,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --font-poppins: 'Poppins', 'Helvetica', 'Arial', sans-serif;
   --color-background: var(--background);
@@ -158,5 +166,9 @@
   .poppins-black {
     font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif;
     font-weight: 500;
+  }
+  .poppins-regular {
+    font-family: 'Poppins', 'Helvetica', 'Arial', sans-serif;
+    font-weight: 400;
   }
 }
