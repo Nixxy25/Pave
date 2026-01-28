@@ -1,5 +1,4 @@
-
-
+import { Footer } from "@/components/footer";
 import { HeroPage } from "@/components/heropage";
 import { Navbar } from "@/components/navbar";
 import { UseCase } from "@/components/usecase";
@@ -10,6 +9,7 @@ export default function Home() {
       <Navbar />
       <HeroPage />
       <UseCase />
+      <Footer />
     </div>
   );
 }

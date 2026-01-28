@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function HeroPage() {
   return (
-    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4 pb-32">
+    <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
       <h2 className="poppins-light bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-2xl md:text-4xl lg:text-7xl py-4 relative z-20">
         Create sales pages in under 2 minutes <br /> and accept crypto payments instantly.
       </h2>

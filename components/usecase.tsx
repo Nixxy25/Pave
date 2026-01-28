@@ -2,6 +2,11 @@
 
 import React from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import {
+  AnimatedSpan,
+  Terminal,
+  TypingAnimation,
+} from "@/components/ui/magicui/terminal";
 import usecasesData from "@/data/usecases.json";
 
 // Icon components
@@ -116,20 +121,58 @@ export function UseCase() {
                   </p>
                 </div>
                 
-                {/* Code Block */}
-                <div className="bg-neutral-900 rounded-xl border border-neutral-800 overflow-hidden">
-                  <div className="bg-neutral-800 px-4 py-2 flex items-center justify-between border-b border-neutral-700">
-                    <span className="poppins-light text-neutral-400 text-sm">JavaScript / TypeScript</span>
-                    <button className="poppins-light text-xs text-neutral-400 hover:text-white transition-colors">
-                      Copy
-                    </button>
-                  </div>
-                  <pre className="p-6 overflow-x-auto">
-                    <code className="poppins-light text-sm text-neutral-300 leading-relaxed">
-{usecasesData.developer.codeExample}
-                    </code>
-                  </pre>
-                </div>
+                {/* Terminal */}
+                <Terminal>
+                  <TypingAnimation>&gt; npm install @pave/sdk</TypingAnimation>
+
+                  <AnimatedSpan className="text-green-500" delay={800}>
+                    ✔ Installing Pave SDK
+                  </AnimatedSpan>
+
+                  <AnimatedSpan className="text-green-500" delay={1200}>
+                    ✔ Setting up API client
+                  </AnimatedSpan>
+
+                  <AnimatedSpan className="text-green-500" delay={1600}>
+                    ✔ Configuring webhooks
+                  </AnimatedSpan>
+
+                  <TypingAnimation delay={2000}>
+                    &gt; curl -X POST https://api.pave.com/v1/payments \
+                  </TypingAnimation>
+
+                  <TypingAnimation delay={2400} className="pl-4">
+                    -H "Authorization: Bearer YOUR_API_KEY" \
+                  </TypingAnimation>
+
+                  <TypingAnimation delay={2800} className="pl-4">
+                    -H "Content-Type: application/json" \
+                  </TypingAnimation>
+
+                  <TypingAnimation delay={3200} className="pl-4">
+                    -d '&#123;"amount": 100, "currency": "USDC"&#125;'
+                  </TypingAnimation>
+
+                  <AnimatedSpan className="text-green-500" delay={3800}>
+                    ✔ Payment initiated successfully
+                  </AnimatedSpan>
+
+                  <AnimatedSpan className="text-blue-500" delay={4200}>
+                    <span>ℹ Transaction ID: tx_abc123xyz</span>
+                  </AnimatedSpan>
+
+                  <AnimatedSpan className="text-green-500" delay={4600}>
+                    ✔ Webhook event sent to your endpoint
+                  </AnimatedSpan>
+
+                  <TypingAnimation delay={5000} className="text-neutral-400">
+                    Success! Payment processed in 0.8s
+                  </TypingAnimation>
+
+                  <TypingAnimation delay={5400} className="text-neutral-400">
+                    Ready to accept more payments.
+                  </TypingAnimation>
+                </Terminal>
               </div>
             </TabsContent>
 
