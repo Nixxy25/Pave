@@ -17,9 +17,9 @@ export function Navbar() {
             />
           </div>
 
-           <Button className="poppins-light max-sm:text-sm rounded-full bg-white hover:bg-neutral-800 text-black max-sm:px-4 px-6 py-2 h-auto">
+           <span className="poppins-light max-sm:text-sm rounded-full bg-white hover:bg-neutral-800 text-black  h-auto">
              Explore use case
-          </Button>
+          </span>
         </div>
       </div>
     </nav>
