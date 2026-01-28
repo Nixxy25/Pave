@@ -1,0 +1,33 @@
+{
+  "developer": {
+    "title": "API Integration",
+    "description": "Integrate Pave's payment API into your application with just a few lines of code. Our RESTful API is designed for developers who want to move fast.",
+    "codeExample": "// Initialize Pave SDK\nimport { Pave } from '@pave/sdk';\n\nconst pave = new Pave({\n  apiKey: process.env.PAVE_API_KEY,\n  environment: 'production'\n});\n\n// Create a payment link\nconst payment = await pave.payments.create({\n  amount: 100.00,\n  currency: 'USD',\n  description: 'Premium Plan',\n  successUrl: 'https://yourapp.com/success',\n  cancelUrl: 'https://yourapp.com/cancel'\n});"
+  },
+  "company": [
+    {
+      "id": 1,
+      "title": "Global Payments",
+      "description": "Accept payments from customers worldwide without currency conversion fees. Crypto enables borderless transactions, expanding your market reach instantly.",
+      "icon": "globe"
+    },
+    {
+      "id": 2,
+      "title": "Analytics Dashboard",
+      "description": "Get deep insights into your sales performance with real-time analytics. Track revenue, conversion rates, and customer behavior all in one place.",
+      "icon": "chart"
+    },
+    {
+      "id": 3,
+      "title": "Sales Page Builder",
+      "description": "Create beautiful, high-converting sales pages in minutes with our drag-and-drop builder. No design or coding skills required.",
+      "icon": "mobile"
+    },
+    {
+      "id": 4,
+      "title": "Instant Settlements",
+      "description": "No more waiting for funds. Get paid instantly to your crypto wallet or choose auto-conversion to your preferred fiat currency.",
+      "icon": "wallet"
+    }
+  ]
+}
