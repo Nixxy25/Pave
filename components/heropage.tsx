@@ -21,7 +21,7 @@ export function HeroPage() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="poppins-light bg-transparent outline-none text-neutral-900 dark:text-white placeholder:text-neutral-500 text-sm sm:text-base w-40 sm:w-48"
+              className="poppins-light bg-transparent outline-none text-neutral-900 dark:text-white placeholder:text-neutral-500 text-sm sm:text-base max-w-8xl sm:w-48"
             />
             <Button className="poppins-light rounded-full text-white px-4 sm:px-6 py-2 h-auto hover:bg-[#ff7419] text-sm sm:text-base whitespace-nowrap" style={{ backgroundColor: '#fe6500' }}>
               Demo
