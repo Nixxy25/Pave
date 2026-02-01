@@ -19,7 +19,7 @@ export function Footer() {
             </h3>
             <div className="flex items-center gap-6">
               <a
-                href="https://twitter.com"
+                href="https://x.com/paveng_"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="poppins-light text-xl flex items-center gap-2 hover:text-white transition-colors"
@@ -37,7 +37,7 @@ export function Footer() {
                 <ArrowUpRight className="w-5 h-5" />
               </a>
               <a
-                href="mailto:hello@pave.com"
+                // href="mailto:hello@pave.com"
                 className="poppins-light text-xl hover:text-white transition-colors"
               >
                 Email
