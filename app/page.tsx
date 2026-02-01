@@ -1,3 +1,4 @@
+import { Features } from "@/components/features";
 import { Footer } from "@/components/footer";
 import { HeroPage } from "@/components/heropage";
 import { Navbar } from "@/components/navbar";
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <HeroPage />
       <UseCase />
+      <Features />
       <Footer />
     </div>
   );
