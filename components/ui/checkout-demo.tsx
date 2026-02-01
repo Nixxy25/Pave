@@ -65,7 +65,7 @@ export function CheckoutDemo({ className }: { className?: string }) {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <h3 className="mb-1 text-lg text-neutral-900 dark:text-white">
+          <h3 className="mb-1 text-lg max-sm:text-base text-neutral-900 dark:text-white">
             Payment Received
           </h3>
           <p className="text-xs text-neutral-500 dark:text-neutral-400">
