@@ -13,18 +13,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Pave - Global Payment Infrastructure for Modern Commerce",
-  description: "Accept payments from anywhere, send money globally, and manage transactions across borders with ease. Powering the future of commerce.",
+  title: "Pave",
+  description: "Global Payment Infrastructure for Modern Commerce.",
   openGraph: {
-    title: "Pave - Global Payment Infrastructure for Modern Commerce",
-    description: "Accept payments from anywhere, send money globally, and manage transactions across borders with ease. Powering the future of commerce.",
-    images: ["/pave2.png"],
+    title: "Pave",
+    description: "Global Payment Infrastructure for Modern Commerce.",
+    images: ["/pave.png"],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Pave - Global Payment Infrastructure for Modern Commerce",
-    description: "Accept payments from anywhere, send money globally, and manage transactions across borders with ease. Powering the future of commerce.",
-    images: ["/pave2.png"],
+    title: "Pave",
+    description: "Global Payment Infrastructure for Modern Commerce.",
+    images: ["/pave.png"],
   },
 };
 
