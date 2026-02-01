@@ -1,7 +1,6 @@
 "use client"
 
-import { FileTextIcon } from "@radix-ui/react-icons"
-import { BellIcon, Share2Icon, CreditCardIcon } from "lucide-react"
+import { BellIcon, Share2Icon, CreditCardIcon, WorkflowIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 import { BentoCard, BentoGrid } from "@/components/ui/bento-grid"
@@ -35,11 +34,9 @@ const steps = [
 
 const features = [
   {
-    Icon: FileTextIcon,
+    Icon: WorkflowIcon,
     name: "How It Works",
     description: "Get started with Pave in 4 simple steps.",
-    href: "#",
-    cta: "Learn more",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
@@ -74,8 +71,6 @@ const features = [
     Icon: BellIcon,
     name: "Notifications",
     description: "Get notified when something happens.",
-    href: "#",
-    cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
       <AnimatedListDemo className="absolute top-4 right-2 h-[300px] w-full scale-75 border-none [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-90" />
@@ -85,8 +80,6 @@ const features = [
     Icon: Share2Icon,
     name: "Integrations",
     description: "Supports 100+ integrations and counting.",
-    href: "#",
-    cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
     background: (
       <AnimatedBeamMultipleOutputDemo className="absolute top-4 right-2 h-[300px] border-none [mask-image:linear-gradient(to_top,transparent_5%,#000_30%)] transition-all duration-300 ease-out group-hover:scale-105" />
@@ -97,8 +90,6 @@ const features = [
     name: "Instant Checkout",
     description: "Accept crypto payments with instant confirmation.",
     className: "col-span-3 lg:col-span-1",
-    href: "#",
-    cta: "Learn more",
     background: (
       <CheckoutDemo className="absolute inset-0 [mask-image:linear-gradient(to_top,transparent_10%,#000_100%)] transition-all duration-300 ease-out group-hover:scale-105" />
     ),
