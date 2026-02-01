@@ -24,13 +24,14 @@ export function Navbar({ onExploreClick }: NavbarProps) {
             />
           </div>
 
-           <button 
-             onClick={onExploreClick}
-             className="poppins-light cursor-pointer max-sm:text-sm hover:text-neutral-600 text-black flex items-center gap-1 transition-colors bg-transparent border-none"
-           >
-             Explore use case
-             <ArrowUpRight className="w-5 h-5" />
-          </button>
+          <Button 
+            variant="ghost"
+            onClick={onExploreClick}
+            className="poppins-light text-base cursor-pointer max-sm:text-sm hover:text-neutral-600 text-black flex items-center gap-1 transition-colors"
+          >
+            Explore use case
+            <ArrowUpRight className="w-5 h-5" />
+          </Button>
         </div>
       </div>
     </nav>
