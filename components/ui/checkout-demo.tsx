@@ -15,10 +15,10 @@ export function CheckoutDemo({ className }: { className?: string }) {
       <div className="w-full max-w-[280px] rounded-xl border border-neutral-200 bg-white p-4 shadow-lg dark:border-neutral-800 dark:bg-neutral-900">
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
-          <span className="text-xs font-medium text-neutral-500 dark:text-neutral-400">
+          <span className="text-xs text-neutral-500 dark:text-neutral-400">
             Order #4829
           </span>
-          <span className="rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-600 dark:bg-green-900/30 dark:text-green-400">
+          <span className="rounded-full  px-2 py-0.5 text-xs text-black dark:bg-green-900/30 dark:text-green-400">
             Completed
           </span>
         </div>
@@ -34,13 +34,13 @@ export function CheckoutDemo({ className }: { className?: string }) {
               damping: 15,
               delay: 0.2,
             }}
-            className="flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30"
+            className="flex h-16 w-16 items-center justify-center rounded-full bg-[#fe6500] dark:bg-green-900/30"
           >
             <motion.svg
               initial={{ pathLength: 0, opacity: 0 }}
               animate={{ pathLength: 1, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="h-8 w-8 text-green-500"
+              className="h-8 w-8 text-white"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -65,7 +65,7 @@ export function CheckoutDemo({ className }: { className?: string }) {
           transition={{ delay: 0.7 }}
           className="text-center"
         >
-          <h3 className="mb-1 text-lg font-semibold text-neutral-900 dark:text-white">
+          <h3 className="mb-1 text-lg text-neutral-900 dark:text-white">
             Payment Received
           </h3>
           <p className="text-xs text-neutral-500 dark:text-neutral-400">

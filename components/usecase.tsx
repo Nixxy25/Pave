@@ -76,7 +76,7 @@ function FeatureCard({ item }: { item: UseCaseItem }) {
 
 export function UseCase() {
   return (
-    <section className="w-full pb-8 md:pb-12">
+    <section className="w-full pb-8 md:pb-12 scroll-mt-20">
       <div className="w-full px-4">
         {/* Black rounded container */}
         <div className="bg-black/90 rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16">

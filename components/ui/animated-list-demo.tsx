@@ -2,12 +2,11 @@
 
 import { cn } from "@/lib/utils"
 import { AnimatedList } from "@/components/ui/animated-list"
+import Image from "next/image"
 
 interface Item {
   name: string
   description: string
-  icon: string
-  color: string
   time: string
 }
 
@@ -16,35 +15,27 @@ let notifications = [
   name: "Payment received",
   description: "Cross-border payment of $4,200 received.",
   time: "15m ago",
-  icon: "💸",
-  color: "#00C9A7",
 },
 {
   name: "Payout settled",
   description: "₦2,800,000 payout to Lagos settled.",
   time: "10m ago",
-  icon: "✅",
-  color: "#FFB800",
 },
 {
   name: "Exchange rate alert",
   description: "USD/NGN rate shifted by 1.2%.",
   time: "5m ago",
-  icon: "📈",
-  color: "#FF3D71",
 },
 {
   name: "Crypto rate update",
   description: "BTC/USD moved to $61,240. Check your payouts.",
   time: "2m ago",
-  icon: "₿",
-  color: "#1E86FF",
 },
 ]
 
 notifications = Array.from({ length: 10 }, () => notifications).flat()
 
-const Notification = ({ name, description, icon, color, time }: Item) => {
+const Notification = ({ name, description, time }: Item) => {
   return (
     <figure
       className={cn(
@@ -58,21 +49,22 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
       )}
     >
       <div className="flex flex-row items-center gap-3">
-        <div
-          className="flex size-10 items-center justify-center rounded-2xl"
-          style={{
-            backgroundColor: color,
-          }}
-        >
-          <span className="text-lg">{icon}</span>
+        <div className="flex size-10 items-center justify-center rounded-2xl bg-white">
+          <Image 
+            src="/pave2.png" 
+            alt="Pave" 
+            width={32} 
+            height={32}
+            className="object-contain"
+          />
         </div>
         <div className="flex flex-col overflow-hidden">
-          <figcaption className="flex flex-row items-center text-lg font-medium whitespace-pre dark:text-white">
+          <figcaption className="flex flex-row items-center text-lg  whitespace-pre dark:text-white">
             <span className="text-sm sm:text-lg">{name}</span>
             <span className="mx-1">·</span>
             <span className="text-xs text-gray-500">{time}</span>
           </figcaption>
-          <p className="text-sm font-normal dark:text-white/60">
+          <p className="text-xs dark:text-white/60">
             {description}
           </p>
         </div>

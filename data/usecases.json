@@ -7,27 +7,27 @@
   "company": [
     {
       "id": 1,
-      "title": "Global Payments",
-      "description": "Accept payments from customers worldwide without currency conversion fees. Crypto enables borderless transactions, expanding your market reach instantly.",
+      "title": "Global Payment",
+      "description": "Accept payments from customers worldwide without currency conversion fees. Process transactions across borders seamlessly with support for multiple currencies and payment methods.",
       "icon": "globe"
     },
     {
       "id": 2,
-      "title": "Analytics Dashboard",
-      "description": "Get deep insights into your sales performance with real-time analytics. Track revenue, conversion rates, and customer behavior all in one place.",
-      "icon": "chart"
+      "title": "Instant Checkout",
+      "description": "Provide your customers with a lightning-fast checkout experience. One-click payments reduce cart abandonment and increase conversion rates instantly.",
+      "icon": "lightning"
     },
     {
       "id": 3,
-      "title": "Sales Page Builder",
-      "description": "Create beautiful, high-converting sales pages in minutes with our drag-and-drop builder. No design or coding skills required.",
-      "icon": "mobile"
+      "title": "Integration",
+      "description": "Connect Pave with your existing tools and platforms effortlessly. Pre-built integrations with popular e-commerce platforms, accounting software, and business tools.",
+      "icon": "code"
     },
     {
       "id": 4,
-      "title": "Instant Settlements",
-      "description": "No more waiting for funds. Get paid instantly to your crypto wallet or choose auto-conversion to your preferred fiat currency.",
-      "icon": "wallet"
+      "title": "Secure Infrastructure",
+      "description": "Enterprise-grade security with advanced fraud detection. Your transactions are protected with bank-level encryption and real-time monitoring.",
+      "icon": "shield"
     }
   ]
 }
