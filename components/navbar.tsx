@@ -1,8 +1,15 @@
+"use client";
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
-export function Navbar() {
+interface NavbarProps {
+  onExploreClick?: () => void;
+}
+
+export function Navbar({ onExploreClick }: NavbarProps) {
   return (
     <nav className="w-full bg-white">
       <div className="max-w-full mx-auto px-4 mt-4 sm:px-6 lg:px-16">
@@ -17,9 +24,13 @@ export function Navbar() {
             />
           </div>
 
-           <div className="poppins-light cursor-pointer max-sm:text-sm  hover:bg-neutral-800 text-black">
-             Explore use case 
-          </div>
+           <button 
+             onClick={onExploreClick}
+             className="poppins-light cursor-pointer max-sm:text-sm hover:text-neutral-600 text-black flex items-center gap-1 transition-colors bg-transparent border-none"
+           >
+             Explore use case
+             <ArrowUpRight className="w-5 h-5" />
+          </button>
         </div>
       </div>
     </nav>
