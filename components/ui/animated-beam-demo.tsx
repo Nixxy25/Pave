@@ -60,19 +60,19 @@ export function AnimatedBeamMultipleOutputDemo({
         </div>
         <div className="flex flex-col justify-center gap-2">
           <Circle ref={div1Ref}>
-            <Icons.shopify />
+            <Image src="/shopify.svg" alt="Shopify" width={24} height={24} />
           </Circle>
           <Circle ref={div2Ref}>
-            <Icons.stellar />
+            <Image src="/stellar.svg" alt="Stellar" width={24} height={24} />
           </Circle>
           <Circle ref={div3Ref}>
-            <Icons.ethereum />
-          </Circle>
-          <Circle ref={div4Ref}>
             <Icons.globe />
           </Circle>
+          <Circle ref={div4Ref}>
+            <Image src="/usdt.svg" alt="USDT" width={24} height={24} />
+          </Circle>
           <Circle ref={div5Ref}>
-            <Icons.any />
+            <Icons.ethereum />
           </Circle>
         </div>
       </div>
@@ -119,50 +119,6 @@ export function AnimatedBeamMultipleOutputDemo({
 }
 
 const Icons = {
-  shopify: () => (
-    <svg
-      width="100"
-      height="100"
-      viewBox="0 0 109.5 124.5"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill="#95BF47"
-        d="M95.9,23.9c-0.1-0.6-0.6-1-1.1-1c-0.5,0-9.3-0.2-9.3-0.2s-7.4-7.2-8.1-7.9c-0.7-0.7-2.2-0.5-2.7-0.3
-        c0,0-1.4,0.4-3.7,1.1c-0.4-1.3-1-2.8-1.8-4.4c-2.6-5-6.5-7.7-11.1-7.7c0,0,0,0,0,0c-0.3,0-0.6,0-1,0.1c-0.1-0.2-0.3-0.3-0.4-0.5
-        c-2-2.2-4.6-3.2-7.7-3.1c-6,0.2-12,4.5-16.8,12.2c-3.4,5.4-6,12.2-6.8,17.5c-6.9,2.1-11.7,3.6-11.8,3.7c-3.5,1.1-3.6,1.2-4,4.5
-        c-0.3,2.5-9.5,73-9.5,73l76.4,13.2l33.1-8.2C109.5,115.8,96,24.5,95.9,23.9z"
-      />
-      <path
-        fill="#5E8E3E"
-        d="M94.8,22.9c-0.5,0-9.3-0.2-9.3-0.2s-7.4-7.2-8.1-7.9c-0.3-0.3-0.6-0.4-1-0.5l0,109.7l33.1-8.2
-        c0,0-13.5-91.3-13.6-92C95.8,23.3,95.3,22.9,94.8,22.9z"
-      />
-      <path
-        fill="#FFFFFF"
-        d="M58,39.9l-3.8,14.4c0,0-4.3-2-9.4-1.6c-7.5,0.5-7.5,5.2-7.5,6.4c0.4,6.4,17.3,7.8,18.3,22.9
-        c0.7,11.9-6.3,20-16.4,20.6c-12.2,0.8-18.9-6.4-18.9-6.4l2.6-11c0,0,6.7,5.1,12.1,4.7c3.5-0.2,4.8-3.1,4.7-5.1
-        c-0.5-8.4-14.3-7.9-15.2-21.7c-0.7-11.6,6.9-23.4,23.7-24.4C54.7,38.2,58,39.9,58,39.9z"
-      />
-    </svg>
-  ),
-  stellar: () => (
-    <svg
-      width="100"
-      height="100"
-      viewBox="0 0 236.36 200"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill="#000000"
-        d="M203,26.16l-28.46,14.5-137.43,70a82.49,82.49,0,0,1-.7-10.69A81.87,81.87,0,0,1,158.2,28.6l16.29-8.3,2.43-1.24A100,100,0,0,0,18.18,100q0,3.82.29,7.61a18.19,18.19,0,0,1-9.88,17.58L0,129.57V150l25.29-12.89,0,0,8.19-4.18,8.07-4.11v0L186.43,55l16.28-8.29,33.65-17.15V9.14Z"
-      />
-      <path
-        fill="#000000"
-        d="M236.36,50,49.78,145,33.5,153.31,0,170.38v20.41l33.27-16.95,28.46-14.5L199.3,89.24A83.45,83.45,0,0,1,200,100,81.87,81.87,0,0,1,78.09,171.36l-1,.53-17.66,9A100,100,0,0,0,218.18,100c0-2.57-.1-5.14-.29-7.68a18.2,18.2,0,0,1,9.87-17.58l8.6-4.38Z"
-      />
-    </svg>
-  ),
   ethereum: () => (
     <svg
       width="100"
@@ -198,19 +154,6 @@ const Icons = {
           <path fill="#fff" d="M0 0h16v16H0z" />
         </clipPath>
       </defs>
-    </svg>
-  ),
-  any: () => (
-    <svg
-      width="100"
-      height="100"
-      viewBox="0 0 24 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      {/* Plus/Add icon representing "any" integration */}
-      <circle cx="12" cy="12" r="10" stroke="#9CA3AF" strokeWidth="2" />
-      <path d="M12 8V16M8 12H16" stroke="#9CA3AF" strokeWidth="2" strokeLinecap="round" />
     </svg>
   ),
   user: () => (
