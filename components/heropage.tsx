@@ -46,11 +46,29 @@ export function HeroPage({ onExploreClick }: HeroPageProps) {
 
     setIsLoading(true);
     
-    setTimeout(() => {
-      setIsLoading(false);
+    try {
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to send email");
+      }
+
       showAlert("Success! 🎉", "Thank you! Your email has been received. We'll be in touch soon!");
-      setEmail(""); 
-    }, 1500);
+      setEmail("");
+    } catch (error) {
+      console.error("Error sending email:", error);
+      showAlert("Error", "Something went wrong. Please try again later.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -67,7 +85,7 @@ export function HeroPage({ onExploreClick }: HeroPageProps) {
           <div className="flex flex-col sm:flex-row items-center gap-3">
             <Button 
               onClick={onExploreClick}
-              className="poppins-light rounded-full bg-black text-sm sm:text-base hover:bg-neutral-800 text-white px-6 sm:px-8 py-3 h-auto whitespace-nowrap cursor-pointer"
+              className="poppins-light rounded-full bg-black/90  text-sm sm:text-base hover:bg-neutral-800 text-white px-6 sm:px-8 py-3 h-auto whitespace-nowrap cursor-pointer"
             >
               Explore use case
             </Button>

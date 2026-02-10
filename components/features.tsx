@@ -79,7 +79,7 @@ const features = [
   {
     Icon: Share2Icon,
     name: "Integrations",
-    description: "Supports 100+ integrations and counting.",
+    description: "Supports multiple integrations and counting.",
     className: "col-span-3 lg:col-span-2",
     background: (
       <AnimatedBeamMultipleOutputDemo className="absolute top-4 right-2 h-[300px] border-none [mask-image:linear-gradient(to_top,transparent_5%,#000_30%)] transition-all duration-300 ease-out group-hover:scale-105" />
