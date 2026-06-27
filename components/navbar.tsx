@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
@@ -24,14 +22,16 @@ export function Navbar({ onExploreClick }: NavbarProps) {
             />
           </div>
 
-          <Button 
-            variant="ghost"
+          <a
+            href="https://app.pavee.co/dashboard"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={onExploreClick}
             className="poppins-light text-base cursor-pointer max-sm:text-sm hover:text-neutral-600 text-black flex items-center gap-1 transition-colors"
           >
-            Explore use case
+            explore demo
             <ArrowUpRight className="w-5 h-5" />
-          </Button>
+          </a>
         </div>
       </div>
     </nav>
