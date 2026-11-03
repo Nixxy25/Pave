@@ -1,190 +1,137 @@
 "use client";
 
-import React from "react";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import {
-  AnimatedSpan,
-  Terminal,
-  TypingAnimation,
-} from "@/components/ui/magicui/terminal";
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { Code2, Globe2, Link2, Store, Wallet, type LucideIcon } from "lucide-react";
+import { AnimatedSpan, Terminal, TypingAnimation } from "@/components/ui/magicui/terminal";
+import { SectionHeading } from "@/components/reveal";
 import usecasesData from "@/data/usecases.json";
 
-// Icon components
-const icons: Record<string, React.ReactNode> = {
-  code: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-    </svg>
-  ),
-  shield: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-    </svg>
-  ),
-  lightning: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-    </svg>
-  ),
-  book: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-    </svg>
-  ),
-  globe: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-    </svg>
-  ),
-  chart: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-    </svg>
-  ),
-  mobile: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-    </svg>
-  ),
-  wallet: (
-    <svg className="w-6 h-6 text-[#fe6500]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-    </svg>
-  ),
+const icons: Record<string, LucideIcon> = {
+  globe: Globe2,
+  store: Store,
+  link: Link2,
+  wallet: Wallet,
 };
 
-interface UseCaseItem {
-  id: number;
-  title: string;
-  description: string;
-  icon: string;
-}
+const tabs = [
+  { id: "company", label: "For merchants" },
+  { id: "developer", label: "For developers" },
+] as const;
 
-function FeatureCard({ item }: { item: UseCaseItem }) {
-  return (
-    <div className="bg-neutral-900 rounded-xl p-4 sm:p-6 border border-neutral-800">
-      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#fe6500]/20 rounded-lg flex items-center justify-center mb-3 sm:mb-4">
-        {icons[item.icon]}
-      </div>
-      <h3 className="poppins-regular text-white text-lg sm:text-xl mb-2 sm:mb-3">{item.title}</h3>
-      <p className="poppins-light text-neutral-400 text-xs sm:text-sm leading-relaxed">
-        {item.description}
-      </p>
-    </div>
-  );
-}
+type TabId = (typeof tabs)[number]["id"];
 
 export function UseCase() {
+  const [tab, setTab] = useState<TabId>("company");
+
   return (
-    <section className="w-full pb-8 md:pb-12 scroll-mt-20">
-      <div className="w-full px-4">
-        {/* Black rounded container */}
-        <div className="bg-black/90 rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16">
-          {/* Header */}
-          <div className="mb-6 sm:mb-10">
-            <h2 className="poppins-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-2 sm:mb-4">
-              UseCase
-            </h2>
-            <p className="poppins-light text-neutral-400 text-sm sm:text-base md:text-lg max-w-2xl">
-              Whether you&apos;re building the next big thing or running a business, Pave has you covered.
-            </p>
+    <section id="developers" className="scroll-mt-4 px-3 py-4 md:px-5">
+      <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-ink px-5 py-20 md:rounded-[3rem] md:px-12 md:py-28">
+        <div aria-hidden className="grid-fade-dark absolute inset-0" />
+        <div aria-hidden className="absolute -top-40 left-1/2 size-[500px] -translate-x-1/2 rounded-full bg-brand/25 blur-[120px]" />
+
+        <div className="relative">
+          <SectionHeading
+            dark
+            eyebrow="Use cases"
+            title="Built for merchants and"
+            accent="builders."
+            description="Sell to customers anywhere with a simple checkout link, or build payments into your own product with the API."
+          />
+
+          <div className="mt-10 flex justify-center">
+            <div role="tablist" className="relative flex rounded-full border border-white/10 bg-white/5 p-1">
+              {tabs.map((t) => (
+                <button
+                  key={t.id}
+                  role="tab"
+                  aria-selected={tab === t.id}
+                  onClick={() => setTab(t.id)}
+                  className={`relative cursor-pointer rounded-full px-5 py-2 text-sm font-medium transition-colors ${
+                    tab === t.id ? "text-white" : "text-white/50 hover:text-white/80"
+                  }`}
+                >
+                  {tab === t.id && (
+                    <motion.span
+                      layoutId="usecase-tab"
+                      className="absolute inset-0 rounded-full bg-brand"
+                      transition={{ type: "spring", stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span className="relative">{t.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
-          {/* Tabs */}
-          <Tabs defaultValue="developer" className="w-full">
-            <div className="flex justify-center mb-6 sm:mb-8">
-              <TabsList className="bg-neutral-800 p-1 rounded-full">
-                <TabsTrigger 
-                  value="developer" 
-                  className="poppins-light rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base data-[state=active]:bg-[#fe6500] data-[state=active]:text-white text-neutral-400"
+          <div className="mt-12">
+            <AnimatePresence mode="wait">
+              {tab === "developer" ? (
+                <motion.div
+                  key="developer"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="mx-auto grid max-w-5xl items-center gap-10 lg:grid-cols-5"
                 >
-                  Developer
-                </TabsTrigger>
-                <TabsTrigger 
-                  value="company" 
-                  className="poppins-light rounded-full px-4 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base data-[state=active]:bg-[#fe6500] data-[state=active]:text-white text-neutral-400"
+                  <div className="lg:col-span-2">
+                    <span className="mb-4 grid size-11 place-items-center rounded-xl bg-white/10 text-brand">
+                      <Code2 className="size-5" />
+                    </span>
+                    <h3 className="text-3xl font-semibold tracking-tight text-white">
+                      {usecasesData.developer.title}
+                    </h3>
+                    <p className="mt-3 text-white/60">{usecasesData.developer.description}</p>
+                  </div>
+                  <div className="lg:col-span-3">
+                    <Terminal className="max-w-none">
+                      <TypingAnimation>&gt; npm install @pave/sdk</TypingAnimation>
+                      <AnimatedSpan className="text-green-500" delay={800}>✔ Installing Pave SDK</AnimatedSpan>
+                      <AnimatedSpan className="text-green-500" delay={1200}>✔ Setting up API client</AnimatedSpan>
+                      <AnimatedSpan className="text-green-500" delay={1600}>✔ Configuring webhooks</AnimatedSpan>
+                      <TypingAnimation delay={2000}>&gt; curl -X POST https://api.pave.com/v1/payments \</TypingAnimation>
+                      <TypingAnimation delay={2400} className="pl-4">-H &quot;Authorization: Bearer YOUR_API_KEY&quot; \</TypingAnimation>
+                      <TypingAnimation delay={2800} className="pl-4">-d &#123;&quot;amount&quot;: 100, &quot;currency&quot;: &quot;USDC&quot;&#125;</TypingAnimation>
+                      <AnimatedSpan className="text-green-500" delay={3500}>✔ Payment initiated successfully</AnimatedSpan>
+                      <AnimatedSpan className="text-blue-400" delay={3900}>
+                        <span>ℹ Transaction ID: tx_abc123xyz</span>
+                      </AnimatedSpan>
+                      <AnimatedSpan className="text-green-500" delay={4300}>✔ Webhook event sent to your endpoint</AnimatedSpan>
+                    </Terminal>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="company"
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -16 }}
+                  transition={{ duration: 0.3 }}
+                  className="mx-auto grid max-w-5xl gap-4 sm:grid-cols-2"
                 >
-                  Company
-                </TabsTrigger>
-              </TabsList>
-            </div>
-
-            {/* Developer Content */}
-            <TabsContent value="developer" className="mt-4 sm:mt-6">
-              <div className="max-w-4xl mx-auto">
-                <div className="mb-4 sm:mb-6 text-center">
-                  <h3 className="poppins-regular text-white text-xl sm:text-2xl md:text-3xl mb-2 sm:mb-3">
-                    {usecasesData.developer.title}
-                  </h3>
-                  <p className="poppins-light text-neutral-400 text-sm sm:text-base md:text-lg">
-                    {usecasesData.developer.description}
-                  </p>
-                </div>
-                
-                {/* Terminal */}
-                <Terminal>
-                  <TypingAnimation>&gt; npm install @pave/sdk</TypingAnimation>
-
-                  <AnimatedSpan className="text-green-500" delay={800}>
-                    ✔ Installing Pave SDK
-                  </AnimatedSpan>
-
-                  <AnimatedSpan className="text-green-500" delay={1200}>
-                    ✔ Setting up API client
-                  </AnimatedSpan>
-
-                  <AnimatedSpan className="text-green-500" delay={1600}>
-                    ✔ Configuring webhooks
-                  </AnimatedSpan>
-
-                  <TypingAnimation delay={2000}>
-                    &gt; curl -X POST https://api.pave.com/v1/payments \
-                  </TypingAnimation>
-
-                  <TypingAnimation delay={2400} className="pl-4">
-                    -H "Authorization: Bearer YOUR_API_KEY" \
-                  </TypingAnimation>
-
-                  <TypingAnimation delay={2800} className="pl-4">
-                    -H "Content-Type: application/json" \
-                  </TypingAnimation>
-
-                  <TypingAnimation delay={3200} className="pl-4">
-                    -d '&#123;"amount": 100, "currency": "USDC"&#125;'
-                  </TypingAnimation>
-
-                  <AnimatedSpan className="text-green-500" delay={3800}>
-                    ✔ Payment initiated successfully
-                  </AnimatedSpan>
-
-                  <AnimatedSpan className="text-blue-500" delay={4200}>
-                    <span>ℹ Transaction ID: tx_abc123xyz</span>
-                  </AnimatedSpan>
-
-                  <AnimatedSpan className="text-green-500" delay={4600}>
-                    ✔ Webhook event sent to your endpoint
-                  </AnimatedSpan>
-
-                  <TypingAnimation delay={5000} className="text-neutral-400">
-                    Success! Payment processed in 0.8s
-                  </TypingAnimation>
-
-                  <TypingAnimation delay={5400} className="text-neutral-400">
-                    Ready to accept more payments.
-                  </TypingAnimation>
-                </Terminal>
-              </div>
-            </TabsContent>
-
-            {/* Company Content */}
-            <TabsContent value="company" className="mt-4 sm:mt-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                {usecasesData.company.map((item) => (
-                  <FeatureCard key={item.id} item={item} />
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
+                  {usecasesData.company.map((item, i) => {
+                    const Icon = icons[item.icon] ?? Globe2;
+                    return (
+                      <motion.div
+                        key={item.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.08 }}
+                        className="group rounded-3xl border border-white/10 bg-white/[0.03] p-7 transition-colors hover:border-brand/40 hover:bg-white/[0.06]"
+                      >
+                        <span className="mb-5 grid size-11 place-items-center rounded-xl bg-brand/15 text-brand transition-transform group-hover:scale-110">
+                          <Icon className="size-5" />
+                        </span>
+                        <h3 className="text-xl font-semibold text-white">{item.title}</h3>
+                        <p className="mt-2 text-sm leading-relaxed text-white/60">{item.description}</p>
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>

@@ -18,12 +18,12 @@ let notifications = [
 },
 {
   name: "Payout settled",
-  description: "₦2,800,000 payout to Lagos settled.",
+  description: "GH₵2,800 payout to Accra settled.",
   time: "10m ago",
 },
 {
   name: "Exchange rate alert",
-  description: "USD/NGN rate shifted by 1.2%.",
+  description: "USD/GHS rate shifted by 1.2%.",
   time: "5m ago",
 },
 {
