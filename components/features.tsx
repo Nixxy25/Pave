@@ -15,6 +15,7 @@ function Card({
   body,
   children,
   delay = 0,
+  tall = false,
 }: {
   className?: string;
   icon: React.ElementType;
@@ -22,6 +23,7 @@ function Card({
   body: string;
   children: React.ReactNode;
   delay?: number;
+  tall?: boolean;
 }) {
   return (
     <Reveal
@@ -29,7 +31,7 @@ function Card({
       className={`group relative flex flex-col overflow-hidden rounded-3xl bg-white card-shadow transition-transform duration-500 hover:-translate-y-1 ${className}`}
     >
       <Spotlight className="flex h-full flex-col">
-      <div className="relative h-64 overflow-hidden border-b border-black/5 bg-gradient-to-b from-neutral-50 to-white">
+      <div className={`relative ${tall ? "h-80" : "h-64"} overflow-hidden border-b border-black/5 bg-gradient-to-b from-neutral-50 to-white`}>
         {children}
       </div>
       <div className="p-7">
@@ -200,15 +202,17 @@ export function Features() {
 
           <Card
             className="md:col-span-3"
+            tall
             icon={Plug}
             title="Integrations"
             body="Embed checkout in your store and connect the stablecoins and commerce tools you already use."
           >
-            <AnimatedBeamMultipleOutputDemo className="absolute top-1/2 left-0 h-[400px] w-full -translate-y-1/2 scale-[0.75] border-none" />
+            <AnimatedBeamMultipleOutputDemo className="absolute inset-0 h-full w-full border-none p-4" />
           </Card>
 
           <Card
             className="md:col-span-3"
+            tall
             icon={Bell}
             title="Real-time notifications"
             body="Know the moment a customer pays and when your money settles."
