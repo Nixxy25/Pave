@@ -1,129 +1,105 @@
-'use client';
+"use client";
 
-import React, { useState } from "react";
-import { BackgroundLines } from "@/components/ui/background-lines";
-import { Button } from "@/components/ui/button";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog";
+import { motion } from "motion/react";
+import { ArrowUpRight, Sparkles } from "lucide-react";
+import { EmailForm } from "@/components/email-form";
+import { HeroVisual } from "@/components/hero-visual";
 
-interface HeroPageProps {
-  onExploreClick?: () => void;
-}
+const headline = ["Global", "payments,"];
+const headline2 = ["built", "for", "modern", "commerce."];
 
-export function HeroPage({ onExploreClick }: HeroPageProps) {
-  const [email, setEmail] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [alertOpen, setAlertOpen] = useState(false);
-  const [alertContent, setAlertContent] = useState({ title: "", description: "" });
+const container = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.07, delayChildren: 0.15 } },
+};
+const word = {
+  hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+  show: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const },
+  },
+};
 
-  const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const showAlert = (title: string, description: string) => {
-    setAlertContent({ title, description });
-    setAlertOpen(true);
-  };
-
-  const handleDemoClick = async () => {
-    if (!email.trim()) {
-      showAlert("Email Required", "Please enter your email address to continue.");
-      return;
-    }
-
-    if (!validateEmail(email)) {
-      showAlert("Invalid Email", "Please enter a valid email address.");
-      return;
-    }
-
-    setIsLoading(true);
-    
-    try {
-      const response = await fetch("/api/mail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to send email");
-      }
-
-      showAlert("Success! 🎉", "Thank you! Your email has been received. We'll be in touch soon!");
-      setEmail("");
-    } catch (error) {
-      console.error("Error sending email:", error);
-      showAlert("Error", "Something went wrong. Please try again later.");
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+export function HeroPage() {
   return (
-    <>
-      <BackgroundLines className="flex items-center justify-center w-full flex-col px-4 min-h-[80vh] md:min-h-[90vh]">
-        <span className="poppins-regular bg-clip-text text-transparent text-center bg-gradient-to-b from-neutral-900 to-neutral-700 dark:from-neutral-600 dark:to-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl max-w-6xl py-4 relative z-20">
-          Global payment infrastructure for modern commerce.
-        </span>
-        <p className="poppins-light max-w-xl md:max-w-2xl mx-auto text-sm md:text-base text-neutral-700 dark:text-neutral-400 text-center mt-4">
-          Accept payments from anywhere, send money globally, and manage transactions across borders with ease. Powering the future of commerce.
-        </p>
-        
-        <div className="relative mt-8 md:mt-16 z-20 px-2 w-full max-w-2xl">
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            <Button 
-              onClick={onExploreClick}
-              className="poppins-light rounded-full bg-black/90  text-sm sm:text-base hover:bg-neutral-800 text-white px-6 sm:px-8 py-3 h-auto whitespace-nowrap cursor-pointer"
-            >
-              Explore use case
-            </Button>
-            <div className="flex items-center bg-white dark:bg-neutral-900 rounded-full border border-neutral-200 dark:border-neutral-700 shadow-sm pl-4 sm:pl-6 pr-1 py-1 w-full sm:w-auto">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && handleDemoClick()}
-                className="poppins-light bg-transparent outline-none text-neutral-900 dark:text-white placeholder:text-neutral-500 text-sm sm:text-base w-full sm:w-64 md:w-72"
-              />
-              <Button 
-                onClick={handleDemoClick}
-                disabled={isLoading}
-                className="poppins-light rounded-full text-white px-4 sm:px-6 py-2 h-auto hover:bg-[#ff7419] text-sm sm:text-base whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed" 
-                style={{ backgroundColor: '#fe6500' }}
-              >
-                {isLoading ? "..." : "Demo"}
-              </Button>
-            </div>
-          </div>
-        </div>
-      </BackgroundLines>
+    <section id="top" className="relative isolate overflow-hidden pt-32 pb-24 md:pt-44">
+      {/* background */}
+      <div aria-hidden className="grid-fade absolute inset-0 -z-10" />
+      <div aria-hidden className="animate-drift absolute left-1/2 top-[-10%] -z-10 h-[520px] w-[820px] -translate-x-1/2 rounded-full bg-brand/25 blur-[120px]" />
+      <div aria-hidden className="animate-drift-slow absolute right-[-10%] top-[30%] -z-10 h-[420px] w-[420px] rounded-full bg-amber-300/40 blur-[110px]" />
+      <div aria-hidden className="animate-drift absolute left-[-8%] top-[40%] -z-10 h-[380px] w-[380px] rounded-full bg-pink-300/30 blur-[110px]" />
 
-      <AlertDialog open={alertOpen} onOpenChange={setAlertOpen}>
-        <AlertDialogContent>
-          <AlertDialogHeader>
-            <AlertDialogTitle className="poppins-regular">{alertContent.title}</AlertDialogTitle>
-            <AlertDialogDescription className="poppins-light">
-              {alertContent.description}
-            </AlertDialogDescription>
-          </AlertDialogHeader>
-          <AlertDialogFooter>
-            <AlertDialogAction className="poppins-light">OK</AlertDialogAction>
-          </AlertDialogFooter>
-        </AlertDialogContent>
-      </AlertDialog>
-    </>
+      <div className="mx-auto flex max-w-6xl flex-col items-center px-5 text-center">
+        <motion.a
+          href="https://x.com/paveng_"
+          target="_blank"
+          rel="noopener noreferrer"
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="group inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/80 py-1.5 pr-3 pl-1.5 text-sm text-neutral-600 shadow-sm backdrop-blur transition-colors hover:border-brand/40"
+        >
+          <span className="inline-flex items-center gap-1 rounded-full bg-brand px-2.5 py-0.5 text-xs font-medium text-white">
+            <Sparkles className="size-3" /> New
+          </span>
+          Get paid in USDC or local currency
+          <ArrowUpRight className="size-3.5 text-neutral-400 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </motion.a>
+
+        <motion.h1
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mt-8 max-w-5xl text-5xl leading-[1.02] font-semibold tracking-tight text-balance text-ink sm:text-6xl md:text-7xl lg:text-[5.5rem]"
+        >
+          {headline.map((w) => (
+            <motion.span key={w} variants={word} className="mr-[0.22em] inline-block">
+              {w}
+            </motion.span>
+          ))}
+          <br className="hidden sm:block" />
+          {headline2.map((w, i) => (
+            <motion.span
+              key={w}
+              variants={word}
+              className={`mr-[0.22em] inline-block ${
+                i >= 2 ? "font-serif font-normal text-brand italic" : ""
+              }`}
+            >
+              {w}
+            </motion.span>
+          ))}
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.7 }}
+          className="mt-7 max-w-xl text-base text-pretty text-neutral-500 md:text-xl"
+        >
+          Create your store, share or embed a checkout link, and get paid. Customers pay in
+          USDC or their local currency, and you receive USDC or your own local currency.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85, duration: 0.7 }}
+          className="mt-9 flex w-full flex-col items-center gap-4"
+        >
+          <EmailForm />
+          <a
+            href="#features"
+            className="text-sm text-neutral-500 underline-offset-4 transition-colors hover:text-ink hover:underline"
+          >
+            or explore what Pave can do ↓
+          </a>
+        </motion.div>
+
+        <HeroVisual />
+      </div>
+    </section>
   );
 }

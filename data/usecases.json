@@ -1,33 +1,33 @@
 {
   "developer": {
-    "title": "API Integration",
-    "description": "Integrate Pave's payment API into your application with just a few lines of code. Our RESTful API is designed for developers who want to move fast.",
+    "title": "Embed checkout with the API",
+    "description": "Prefer to build it yourself? Create payment links and embed Pave checkout in your own app with just a few lines of code.",
     "codeExample": "// Initialize Pave SDK\nimport { Pave } from '@pave/sdk';\n\nconst pave = new Pave({\n  apiKey: process.env.PAVE_API_KEY,\n  environment: 'production'\n});\n\n// Create a payment link\nconst payment = await pave.payments.create({\n  amount: 100.00,\n  currency: 'USD',\n  description: 'Premium Plan',\n  successUrl: 'https://yourapp.com/success',\n  cancelUrl: 'https://yourapp.com/cancel'\n});"
   },
   "company": [
     {
       "id": 1,
-      "title": "Global Payment",
-      "description": "Accept payments from customers worldwide without currency conversion fees. Process transactions across borders seamlessly with support for multiple currencies and payment methods.",
-      "icon": "globe"
+      "title": "Your own store",
+      "description": "Set up your store in minutes and start selling. Everything you need to accept payments, in one place.",
+      "icon": "store"
     },
     {
       "id": 2,
-      "title": "Instant Checkout",
-      "description": "Provide your customers with a lightning-fast checkout experience. One-click payments reduce cart abandonment and increase conversion rates instantly.",
-      "icon": "lightning"
+      "title": "Checkout links",
+      "description": "Create a checkout link and send it to your customer, or embed checkout directly on your website or store.",
+      "icon": "link"
     },
     {
       "id": 3,
-      "title": "Integration",
-      "description": "Connect Pave with your existing tools and platforms effortlessly. Pre-built integrations with popular e-commerce platforms, accounting software, and business tools.",
-      "icon": "code"
+      "title": "Customers pay their way",
+      "description": "Customers pay in USDC or their local currency, so buying from you is easy wherever they are.",
+      "icon": "globe"
     },
     {
       "id": 4,
-      "title": "Secure Infrastructure",
-      "description": "Enterprise-grade security with advanced fraud detection. Your transactions are protected with bank-level encryption and real-time monitoring.",
-      "icon": "shield"
+      "title": "Get paid your way",
+      "description": "Receive your money in USDC or your own local currency, and track every payment as it lands.",
+      "icon": "wallet"
     }
   ]
 }
